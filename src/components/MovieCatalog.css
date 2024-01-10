@@ -23,6 +23,14 @@
   width: calc(33.33% - 10px);
   margin-bottom: 20px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.movie-item:hover {
+  transform: scale(1.1);
+  cursor: pointer; /* Cambia el cursor a una mano al pasar sobre la imagen */
 }
 
 .movie-item img {
