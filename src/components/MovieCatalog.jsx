@@ -1,6 +1,8 @@
 // En MovieCatalog.jsx
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link, Route, Routes } from 'react-router-dom'
+import MovieDetails from './MovieDetails'
 import './MovieCatalog.css'
 
 const MovieCatalog = () => {
@@ -20,10 +22,11 @@ const MovieCatalog = () => {
           }
         })
 
-        // Verificar si hay nuevas películas únicas antes de actualizar el estado
-        const newMovies = response.data.results.filter(movie => !movies.some(existingMovie => existingMovie.id === movie.id))
+        const newMovies = response.data.results.filter(
+          (movie) => !movies.some((existingMovie) => existingMovie.id === movie.id)
+        )
 
-        setMovies(prevMovies => [...prevMovies, ...newMovies])
+        setMovies((prevMovies) => [...prevMovies, ...newMovies])
         setLoading(false)
       } catch (error) {
         console.error('Error fetching data:', error)
@@ -36,7 +39,7 @@ const MovieCatalog = () => {
   }, [page, movies])
 
   const loadMore = () => {
-    setPage(prevPage => prevPage + 1)
+    setPage((prevPage) => prevPage + 1)
   }
 
   const handleSearch = (event) => {
@@ -65,17 +68,23 @@ const MovieCatalog = () => {
       <ul className='movie-list'>
         {filteredMovies.map((movie) => (
           <li key={movie.id} className='movie-item'>
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-            />
-            <p>{movie.title}</p>
+            <Link to={`/movie/${movie.id}`}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+              />
+              <p>{movie.title}</p>
+            </Link>
           </li>
         ))}
       </ul>
-      {!loading && !error && (
-        <button onClick={loadMore}>Cargar más</button>
-      )}
+      {!loading && !error && <button onClick={loadMore}>Cargar más</button>}
+
+      {/* Agrega la ruta de MovieDetails aquí */}
+      <Routes>
+        {/* Este es solo un ejemplo, asegúrate de tener la ruta correcta */}
+        <Route path='/:movieId' element={<MovieDetails />} />
+      </Routes>
     </div>
   )
 }
