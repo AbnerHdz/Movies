@@ -1,0 +1,11 @@
+/* En MovieCarousel.css */
+.movie-carousel {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .carousel {
+    margin-top: 20px;
+  }
+  

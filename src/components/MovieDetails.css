@@ -1,18 +1,19 @@
 /* En MovieDetails.css */
 .movie-details-container {
     display: flex;
-    align-items: center;
+    align-items: center; /* Alinea la imagen y la información al centro verticalmente */
     justify-content: center;
     height: 100vh; /* Ajusta la altura según sea necesario */
   }
   
   .movie-details-image {
     max-width: 300px; /* Ajusta según sea necesario */
+    margin-right: 20px; /* Añade un margen a la derecha para separar la imagen */
     border-radius: 10px; /* Ajusta el radio según sea necesario para bordes redondos */
   }
   
   .movie-details-info {
     max-width: 600px; /* Ajusta según sea necesario */
-    text-align: center; /* Centra el texto */
+    text-align: left; /* Alinea el texto a la izquierda */
   }
   

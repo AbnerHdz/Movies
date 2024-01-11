@@ -1,5 +1,33 @@
-.title {
-  text-align: center;
-  font-size: 3rem;
-  color: blueviolet;
+// En App.jsx
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import MovieCatalog from './components/MovieCatalog';
+import MovieDetails from './components/MovieDetails';
+import MovieCarousel from './components/MovieCarousel';
+
+function App() {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      // Aquí puedes realizar la lógica para cargar las películas
+      // ...
+    };
+
+    fetchData();
+  }, []); // Ajusta la dependencia según tus necesidades
+
+  return (
+    <Router>
+      <div className='App'>
+        <Routes>
+          <Route path='/' element={<MovieCatalog movies={movies} />} />
+          <Route path='/movie/:movieId' element={<MovieDetails />} />
+          <Route path='/carousel' element={<MovieCarousel movies={movies} />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
+
+export default App;
